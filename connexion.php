@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-dark" style="margin: 10px;">Se connecter</button>
+            <button type="submit" class="btn btn-dark" style="margin: 10px;">Connexion</button>
         </div>
     </form>
 </div>

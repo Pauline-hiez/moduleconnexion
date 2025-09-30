@@ -27,7 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "Les mots de passe ne correspondent pas";
     }
     else {
-        $stmt = $pdo -> prepare("INSERT INTO utilisateur (login, prenom, nom, motDePasse ) VALUES (?, ?, ?, ?)");
+        
+        $motDePasseHache = password_hash($motDePasse, PASSWORD_DEFAULT);
+        
+        $stmt = $pdo -> prepare("INSERT INTO utilisateur (login, prenom, nom, password ) VALUES (?, ?, ?, ?)");
 
         try {
             $stmt -> execute([$login, $prenom, $nom, $motDePasse]);
@@ -99,7 +102,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <h2 class="formulaire">Formulaire d'inscription</h2>
 
     <div class="container mt-5">
-    <h2>Inscription</h2>
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error ?></div>
     <?php endif; ?>
@@ -126,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-dark" style="margin: 10px;">S'inscrire'</button>
+            <button type="submit" class="btn btn-dark" style="margin: 10px;">S'inscrire</button>
         </div>
     </form>
 </div>
