@@ -9,40 +9,30 @@ $password = "";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
+    die("Erreur de connexion : " . $e -> getMessage());
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $login = $_POST["login"];
+    $password = $_POST["password"];
 
-    $login = ($_POST["login"]);
-    $prenom = ($_POST["prenom"]);
-    $nom = ($_POST["nom"]);
-    $motDePasse = $_POST["mot_de_passe"];
-    $confirmMdp = $_POST["confirm_password"];
+    $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE login = ?");
+    $stmt->execute([$login]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($motDePasse !== $confirmMdp) {
-        $error = "Les mots de passe ne correspondent pas";
+    if ($user && password_verify($password, $user["password"])) {
+        $_SESSION["user_login"] = $user["login"];
+        $_SESSION["user_prenom"] = $user["prenom"];
+        $_SESSION["user_nom"] = $user["nom"];
+
+        header("Location: profil.php");
+        exit();
     }
     else {
-        $stmt = $pdo -> prepare("INSERT INTO utilisateur (login, prenom, nom, motDePasse ) VALUES (?, ?, ?, ?)");
-
-        try {
-            $stmt -> execute([$login, $prenom, $nom, $motDePasse]);
-            header("Location: connexion.php");
-            exit();    
-        }
-
-        catch (PDOException $e){
-            if ($e->getCode() == 23000) {
-                $error = "Ce login existe déjà";
-            }
-            else {
-                $error = "Erreur : " . $e->getMessage();
-            }
-        }
+        $error = "Login ou mot de passe incorrect";
     }
 }
 
@@ -96,44 +86,37 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <main>
 
-    <h2 class="formulaire">Formulaire d'inscription</h2>
+    <h2 class="formulaire">Connexion</h2>
 
-    <div class="container mt-5">
-    <h2>Inscription</h2>
+        <div class="container mt-5">
+
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?= $error ?></div>
     <?php endif; ?>
-    <form method="post" action="inscription.php">
+
+    <form method="post" action="connexion.php">
         <div class="mb-3">
-            <div class="mb-3">
             <label for="login" class="form-label">Login</label>
-            <input type="text" class="form-control" id="login" name="login" required>
-        </div>
-            <div class="mb-3">
-            <label for="prenom" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="prenom" name="prenom" required>
-        </div>
-            <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="nom" name="nom" required>
-        </div>
-        
-        <div class="mb-3">
-            <label for="mot_de_passe" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="mot_de_passe" name="mot_de_passe" required>
+            <div class="input-group">
+                <span class="input-group-text">👤</span>
+                <input type="text" class="form-control" id="login" name="login" placeholder="Votre login" required>
+            </div>
         </div>
         <div class="mb-3">
-            <label for="confirm_password" class="form-label">Confirmer le mot de passe</label>
-            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+            <label for="password" class="form-label">Mot de passe</label>
+            <div class="input-group">
+                <span class="input-group-text">🔒</span>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Votre mot de passe" required>
+            </div>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-dark" style="margin: 10px;">S'inscrire'</button>
+            <button type="submit" class="btn btn-dark" style="margin: 10px;">Se connecter</button>
         </div>
     </form>
 </div>
 
 
 </main>
-
 
 
 <footer class="bg-dark text-white py-4">

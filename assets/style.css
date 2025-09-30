@@ -13,39 +13,8 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* Formulaire inscription */
-
 .formulaire {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-insc {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-}
-
-.form-insc input {
-  width: 300px;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-form.form-insc button {
-  width: 150px;
-  padding: 10px;
-  background-color: #052526;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-form.form-insc button:hover {
-  background-color: #03403a;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
