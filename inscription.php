@@ -65,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
 
 <?php require_once "src/header.php"; ?>
+<?php require_once "src/navbar.php"; ?>
 
 <main>
     <h2 class="formulaire">Formulaire d'inscription</h2>
