@@ -67,12 +67,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
-    <title>Accueil</title>
+    <title>Connexion</title>
+    <link rel="icon" href="assets/icones/tl.webp" type="image/png">
 </head>
 <body>
 
 <header class="bg-dark text-white py-4">
-<div class="d-flex justify-content-sm-center"><h1>Bienvenue sur mon site</h1></div>
+<div class="d-flex justify-content-sm-center"><h1>Connectez-vous</h1></div>
     
 
 </header>

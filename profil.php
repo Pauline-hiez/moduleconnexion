@@ -49,11 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
     <title>Accueil</title>
+    <link rel="icon" href="assets/icones/tl.webp" type="image/png">
 </head>
 <body>
 
 <header class="bg-dark text-white py-4">
-<div class="d-flex justify-content-sm-center"><h1>Bienvenue sur mon site</h1></div>
+<div class="d-flex justify-content-sm-center"><h1>Votre profil</h1></div>
     
 
 </header>
