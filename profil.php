@@ -92,10 +92,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <h2 class="formulaire">Mon profil</h2>
 
 <div class="container mt-5">
+
+    <div class="text-center mt-4">
+    <?php if (!empty($_SESSION["welcome_message"])): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            🎉 <?= $_SESSION["welcome_message"] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+        <?php unset($_SESSION["welcome_message"]); ?>
+    <?php endif; ?>
     
     <?php if (!empty($success)): ?>
         <div class="alert alert-success"><?= $success ?></div>
     <?php endif; ?>
+    </div>
 
     <form method="post" action="profil.php">
         <div class="mb-3">
@@ -114,6 +124,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <button type="submit" class="btn btn-dark" style="margin: 10px;">Modifier</button>
         </div>
     </form>
+    
+    
+    <div class="text-center mt-4">
+        <a href="deconnexion.php" class="btn btn-danger" style="margin: 10px;" onclick="return confirm('Êtes-vous sûr de vouloir vous déconnecter ?')">
+            Déconnexion
+        </a>
+    </div>
 </div>
 
 </main>

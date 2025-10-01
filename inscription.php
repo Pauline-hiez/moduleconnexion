@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt = $pdo -> prepare("INSERT INTO utilisateur (login, prenom, nom, password ) VALUES (?, ?, ?, ?)");
 
         try {
-            $stmt -> execute([$login, $prenom, $nom, $motDePasse]);
+            $stmt -> execute([$login, $prenom, $nom, $motDePasseHache]);
             header("Location: connexion.php");
             exit();    
         }
