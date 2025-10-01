@@ -47,59 +47,7 @@
     
 <main>
 
-<div class="container text-center my-5">
-  
-  <div class="row g-4">
-    <div class="col-md-4">
-      <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/Thailand.jpg" class="img-fluid custom-img mb-3" alt="Image 1">
-        <button class="btn text-white" style="background-color:#052526;">Thailand</button>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/Grece.jpg" class="img-fluid custom-img mb-3" alt="Image 2">
-        <button class="btn text-white" style="background-color:#052526;">Grèce</button>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/Caledonie.jpg" class="img-fluid custom-img mb-3" alt="Image 3">
-        <button class="btn text-white" style="background-color:#052526;">Nouvelle-Calédonie</button>
-      </div>
-    </div>
-  </div>
 
-  <div class="row g-4 mt-0">
-    <div class="col-md-4">
-      <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/Espagne.jpg" class="img-fluid custom-img mb-3" alt="Image 4">
-        <button class="btn text-white" style="background-color:#052526;">Espagne</button>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/Bretagne.jpg" class="img-fluid custom-img mb-3" alt="Image 5">
-        <button class="btn text-white" style="background-color:#052526;">Bretagne</button>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/Chambord.jpg" class="img-fluid custom-img mb-3" alt="Image 6">
-        <button class="btn text-white" style="background-color:#052526;">Château de Chambord</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="row g-4 mt-0">
-    <div class="col-md-4 offset-md-4">
-      <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/Villandry.jpg" class="img-fluid custom-img mb-3" alt="Image 7">
-        <button class="btn text-white" style="background-color:#052526;">Château de Villandry</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 </main>
 
@@ -116,6 +64,9 @@
   </a>
   <a href="https://www.instagram.com" target="_blank">
     <img src="assets/icones/instagram.png" alt="Instagram" class="img-fluid" style="width:30px; height:30px;">
+  </a>
+  <a href="https://github.com/Pauline-hiez" target="_blank">
+    <img src="assets/icones/github.png" alt="github" class="img-fluid" style="width:30px; height:30px;">
   </a>
 </div>
 

@@ -154,6 +154,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <a href="https://www.instagram.com" target="_blank">
     <img src="assets/icones/instagram.png" alt="Instagram" class="img-fluid" style="width:30px; height:30px;">
   </a>
+  <a href="https://github.com/Pauline-hiez" target="_blank">
+    <img src="assets/icones/github.png" alt="github" class="img-fluid" style="width:30px; height:30px;">
+  </a>
 </div>
 
     <div class="mx-auto" style="width: 200px;">

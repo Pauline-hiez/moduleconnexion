@@ -1,3 +1,37 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION["user_login"])) {
+    header("Location: connexion.php");
+    exit();
+}
+
+if($_SESSION["user_login"] !== "admin") {
+    echo "Accès refusé, vous n'êtes pas admin.";
+    exit();
+}
+
+$host = "localhost";
+$dbname = "moduleconnexion";
+$username = "root";
+$password = "";
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+
+$stmt = $pdo->query("SELECT id, login, nom, prenom FROM utilisateur");
+$utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,7 +80,26 @@
 
 <main>
 
-
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Login</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($utilisateurs as $user): ?>
+        <tr>
+            <td><?= htmlspecialchars($user["id"]) ?></td>
+            <td><?= htmlspecialchars($user["login"]) ?></td>
+            <td><?= htmlspecialchars($user["prenom"]) ?></td>
+            <td><?= htmlspecialchars($user["nom"]) ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
 
 </main>
 
@@ -62,6 +115,9 @@
   </a>
   <a href="https://www.instagram.com" target="_blank">
     <img src="assets/icones/instagram.png" alt="Instagram" class="img-fluid" style="width:30px; height:30px;">
+  </a>
+  <a href="https://github.com/Pauline-hiez" target="_blank">
+    <img src="assets/icones/github.png" alt="github" class="img-fluid" style="width:30px; height:30px;">
   </a>
 </div>
 
