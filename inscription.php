@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/style.css">
     <title>Inscription</title>
-    <link rel="icon" href="assets/icones/tl.webp" type="image/png">
+    <link rel="icon" href="assets/icones/tl.ico" type="image/png">
 </head>
 <body>
     
