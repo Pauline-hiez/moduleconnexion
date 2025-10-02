@@ -16,7 +16,7 @@
     
 <main>
 
-<h2 class="d-flex justify-content-sm-center">Mes projets</h2>
+<h2 class="d-flex justify-content-sm-center">Mon portfolio</h2>
 
 <div class="container text-center my-5">
   

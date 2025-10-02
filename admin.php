@@ -1,29 +1,6 @@
 <?php
 
-session_start();
-
-if(!isset($_SESSION["user_login"])) {
-    header("Location: connexion.php");
-    exit();
-}
-
-if($_SESSION["user_login"] !== "admin") {
-    echo "Accès refusé, vous n'êtes pas admin.";
-    exit();
-}
-
-$host = "localhost";
-$dbname = "moduleconnexion";
-$username = "root";
-$password = "";
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
+require_once "src/db.php";
 
 $stmt = $pdo->query("SELECT id, login, nom, prenom FROM utilisateur");
 $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
