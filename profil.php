@@ -8,6 +8,9 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $login = ($_POST["login"]);
+    if ($_SESSION["user_login"] == "admin") {
+        $login = "admin";
+    }
     $prenom = ($_POST["prenom"]);
     $nom = ($_POST["nom"]);
 

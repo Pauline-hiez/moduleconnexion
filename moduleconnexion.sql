@@ -31,7 +31,7 @@ CREATE TABLE `utilisateur` (
   `id` int NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `login` varchar(255) NOT NULL,
+  `login` varchar(255) NOT NULL UNIQUE,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
