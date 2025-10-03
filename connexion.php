@@ -14,23 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if (password_verify($password, $user["password"])) {
             $_SESSION["user_login"] = $user["login"];
-            $_SESSION["user_prenom"] = $user["prenom"];
-            $_SESSION["user_nom"] = $user["nom"];
-            $_SESSION["welcome_message"] = "Bienvenue " . $user["login"] . " !";
-
-            header("Location: profil.php");
-            exit();
-        }
-        
-        elseif ($password === $user["password"]) {
-            
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $updateStmt = $pdo->prepare("UPDATE utilisateur SET password = ? WHERE login = ?");
-            $updateStmt->execute([$hashedPassword, $login]);
-            
-            $_SESSION["user_login"] = $user["login"];
-            $_SESSION["user_prenom"] = $user["prenom"];
-            $_SESSION["user_nom"] = $user["nom"];
             $_SESSION["welcome_message"] = "Bienvenue " . $user["login"] . " !";
 
             header("Location: profil.php");
@@ -39,9 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         else {
             $error = "Login ou mot de passe incorrect";
         }
-    }
-    else {
-        $error = "Login ou mot de passe incorrect";
     }
 }
 
